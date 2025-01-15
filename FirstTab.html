@@ -69,7 +69,7 @@
 
 <div class="container">
 
-  <h1>Калькулятор часового діапазону</h1>
+  <h1 id="mda">Калькулятор часового діапазону</h1>
 
   <div class="form-group">
     <label for="start-date">Початкова дата</label>
@@ -84,9 +84,9 @@
   <div class="form-group">
     <label for="preset">Параметри пресету</label>
     <select id="preset">
-      <option value="">Виберіть пресет...</option>
-      <option value="week">1 Тиждень (7 днів)</option>
-      <option value="month">1 Місяць (30 днів)</option>
+      <option value="">Without preset</option>
+      <option value="week">1 Week (7 days)</option>
+      <option value="month">1 Month (30 days)</option>
     </select>
   </div>
 
@@ -109,7 +109,13 @@
     </select>
   </div>
 
+  <button class="button">Davay</button>
+
+  <p id="result"></p>
+
 </div>
+
+<script src='FirstTab.js'></script>
 
 </body>
 

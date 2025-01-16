@@ -37,14 +37,38 @@ document.addEventListener("DOMContentLoaded", () => {
     })
 
     buttonCalculate.addEventListener('click', () => {
-        const startDate = new Date(start.value);
-        const endDate = new Date(end.value);
-        const difference = endDate - startDate;
 
         if (!start.value || !end.value) {
             outputResult.textContent = 'Please select both dates'
             return;
         }
+
+        const startDate = new Date(start.value);
+        const endDate = new Date(end.value);
+
+        const difference = endDate - startDate;
+
+        const seconds = 1000;
+        const minutes = 1000 * 60;
+        const hours = 1000 * 60 * 60;
+        const days = 1000 * 60 * 60 * 24;
+
+        let result;
+
+        if (optionDate.value === 'seconds') {
+            result = (difference / seconds) + ' seconds';
+        }
+        if (optionDate.value === 'minutes') {
+            result = (difference / minutes) + ' minutes';
+        }
+        if (optionDate.value === 'hours') {
+            result = (difference / hours) + ' hours';
+        }
+        if (optionDate.value === 'days') {
+            result = (difference / days) + ' days';
+        }
+
+        outputResult.textContent = `Result: ${result}`
 
     })
 

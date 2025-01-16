@@ -1,0 +1,135 @@
+Index: FirstTab.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n  <meta charset=\"utf-8\">\r\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\r\n  <title>Kursova</title>\r\n  <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css\" rel=\"stylesheet\" integrity=\"sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH\" crossorigin=\"anonymous\">\r\n</head>\r\n\r\n<style>\r\n\r\n  .nav {\r\n    margin: 50px 20px 0 20px;\r\n  }\r\n  .tab {\r\n    color: white;\r\n    background-color: blueviolet;\r\n    text-align: center;\r\n    border-radius: 10px;\r\n    font-size: 25px;\r\n  }\r\n\r\n  body {\r\n    background-color: #f4f4f9;\r\n  }\r\n  .container {\r\n    margin-top: 20px;\r\n    background-color: #fff;\r\n    width: 100%;\r\n    max-width: 400px;\r\n    gap: 15px;\r\n    display: flex;\r\n    flex-direction: column;\r\n  }\r\n  .container h1 {\r\n    margin-top: 15px;\r\n    text-align: center;\r\n    font-size: 22px;\r\n    font-weight: bold;\r\n    font-family: Arial, sans-serif;\r\n  }\r\n  .form-group label {\r\n    display: block;\r\n    font-weight: bold;\r\n    font-family: Arial, sans-serif;\r\n  }\r\n  .form-group input,\r\n  .form-group select {\r\n    width: 100%;\r\n    padding: 8px;\r\n    border: 1px solid #ccc;\r\n    border-radius: 5px;\r\n    box-sizing: border-box;\r\n  }\r\n  .form-group select {\r\n    background-color: lavender;\r\n  }\r\n  .form-group input {\r\n    background-color: ivory;\r\n  }\r\n\r\n</style>\r\n\r\n<body>\r\n\r\n<nav class=\"nav nav-pills flex-column flex-sm-row\">\r\n  <a class=\"tab flex-sm-fill nav-link\" aria-current=\"page\"> Duration Between Dates</a>\r\n</nav>\r\n\r\n<div class=\"container\">\r\n\r\n  <h1>Калькулятор часового діапазону</h1>\r\n\r\n  <div class=\"form-group\">\r\n    <label for=\"start-date\">Початкова дата</label>\r\n    <input type=\"date\" id=\"start-date\">\r\n  </div>\r\n\r\n  <div class=\"form-group\">\r\n    <label for=\"end-date\">Кінцева дата</label>\r\n    <input type=\"date\" id=\"end-date\" disabled>\r\n  </div>\r\n\r\n  <div class=\"form-group\">\r\n    <label for=\"preset\">Параметри пресету</label>\r\n    <select id=\"preset\">\r\n      <option value=\"\">Виберіть пресет...</option>\r\n      <option value=\"week\">1 Тиждень (7 днів)</option>\r\n      <option value=\"month\">1 Місяць (30 днів)</option>\r\n    </select>\r\n  </div>\r\n\r\n  <div class=\"form-group\">\r\n    <label for=\"day-options\">Параметри днів</label>\r\n    <select id=\"day-options\">\r\n      <option value=\"all\">Всі дні</option>\r\n      <option value=\"weekdays\">Будні дні</option>\r\n      <option value=\"weekends\">Вихідні дні</option>\r\n    </select>\r\n  </div>\r\n\r\n  <div class=\"form-group\">\r\n    <label for=\"calculate-options\">Вибір діапазону</label>\r\n    <select id=\"calculate-options\">\r\n      <option value=\"days\">Порахувати кількість днів</option>\r\n      <option value=\"hours\">Порахувати кількість годин</option>\r\n      <option value=\"minutes\">Порахувати кількість хвилин</option>\r\n      <option value=\"seconds\">Порахувати кількість секунд</option>\r\n    </select>\r\n  </div>\r\n\r\n</div>\r\n\r\n</body>\r\n\r\n</html>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/FirstTab.html b/FirstTab.html
+--- a/FirstTab.html	(revision afca7c6c251e0cb92c0c417f5aa3543155132a33)
++++ b/FirstTab.html	(date 1737043134941)
+@@ -69,7 +69,7 @@
+ 
+ <div class="container">
+ 
+-  <h1>Калькулятор часового діапазону</h1>
++  <h1 id="mda">Калькулятор часового діапазону</h1>
+ 
+   <div class="form-group">
+     <label for="start-date">Початкова дата</label>
+@@ -84,9 +84,9 @@
+   <div class="form-group">
+     <label for="preset">Параметри пресету</label>
+     <select id="preset">
+-      <option value="">Виберіть пресет...</option>
+-      <option value="week">1 Тиждень (7 днів)</option>
+-      <option value="month">1 Місяць (30 днів)</option>
++      <option value="">Without preset</option>
++      <option value="week">1 Week (7 days)</option>
++      <option value="month">1 Month (30 days)</option>
+     </select>
+   </div>
+ 
+@@ -109,8 +109,14 @@
+     </select>
+   </div>
+ 
++  <button class="button">Davay</button>
++
++  <p id="result"></p>
++
+ </div>
+ 
++<script src='FirstTab.js'></script>
++
+ </body>
+ 
+ </html>
+\ No newline at end of file
+Index: FirstTab.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/FirstTab.js b/FirstTab.js
+new file mode 100644
+--- /dev/null	(date 1737043134941)
++++ b/FirstTab.js	(date 1737043134941)
+@@ -0,0 +1,52 @@
++'use strict'
++
++document.addEventListener("DOMContentLoaded", () => {
++
++    const start = document.querySelector('#start-date');
++    const end = document.querySelector('#end-date');
++    const preset = document.querySelector('#preset');
++    const typeDays = document.querySelector('#day-options');
++    const optionDate = document.querySelector('#calculate-options');
++    const buttonCalculate = document.querySelector('.button');
++    const outputResult = document.querySelector('#result');
++
++    start.addEventListener('change', () => {
++        end.disabled = false;
++        end.min = start.value;
++    })
++
++    preset.addEventListener('change', () => {
++        const startDate = new Date(start.value);
++        let changedDate;
++
++        if (!start.value) {
++            outputResult.textContent = 'Please select start date';
++            return;
++        }
++
++        if (preset.value === 'week') {
++            changedDate = new Date(startDate.setDate(startDate.getDate() + 7))
++        }
++        else if (preset.value === 'month') {
++                changedDate = new Date(startDate.setDate(startDate.getDate() + 30));
++            }
++
++        if (changedDate) {
++            end.value = changedDate.toISOString().split('T')[0];
++        }
++    })
++
++    buttonCalculate.addEventListener('click', () => {
++        const startDate = new Date(start.value);
++        const endDate = new Date(end.value);
++        const difference = endDate - startDate;
++
++        if (!start.value || !end.value) {
++            outputResult.textContent = 'Please select both dates'
++            return;
++        }
++
++    })
++
++})
++
+Index: draftFile.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/draftFile.html b/draftFile.html
+new file mode 100644
+--- /dev/null	(date 1737043134941)
++++ b/draftFile.html	(date 1737043134941)
+@@ -0,0 +1,10 @@
++<!DOCTYPE html>
++<html lang="en">
++<head>
++  <meta charset="UTF-8">
++  <title>$Title$</title>
++</head>
++<body>
++$END$
++</body>
++</html>
+\ No newline at end of file
+diff --git a/draftFile.css b/draftFile.css
+new file mode 100644
+diff --git a/draftFile.js b/draftFile.js
+new file mode 100644

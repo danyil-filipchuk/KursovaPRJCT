@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kursova</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+
+<style>
+
+  .nav {
+    margin: 50px 20px 0 20px;
+  }
+  .tab {
+    color: white;
+    background-color: blueviolet;
+    text-align: center;
+    border-radius: 10px;
+    font-size: 25px;
+  }
+
+  body {
+    background-color: #f4f4f9;
+  }
+  .container {
+    margin-top: 20px;
+    background-color: #fff;
+    width: 100%;
+    max-width: 400px;
+    gap: 15px;
+    display: flex;
+    flex-direction: column;
+  }
+  .container h1 {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+  }
+  .form-group label {
+    display: block;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+  }
+  .form-group input,
+  .form-group select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  .form-group select {
+    background-color: lavender;
+  }
+  .form-group input {
+    background-color: ivory;
+  }
+
+</style>
+
+<body>
+
+<nav class="nav nav-pills flex-column flex-sm-row">
+  <a class="tab flex-sm-fill nav-link" aria-current="page"> Duration Between Dates</a>
+</nav>
+
+<div class="container">
+
+  <h1 id="mda">Калькулятор часового діапазону</h1>
+
+  <div class="form-group">
+    <label for="start-date">Початкова дата</label>
+    <input type="date" id="start-date">
+  </div>
+
+  <div class="form-group">
+    <label for="end-date">Кінцева дата</label>
+    <input type="date" id="end-date" disabled>
+  </div>
+
+  <div class="form-group">
+    <label for="preset">Параметри пресету</label>
+    <select id="preset">
+      <option value="">Without preset</option>
+      <option value="week">1 Week (7 days)</option>
+      <option value="month">1 Month (30 days)</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="day-options">Параметри днів</label>
+    <select id="day-options">
+      <option value="all">Всі дні</option>
+      <option value="weekdays">Будні дні</option>
+      <option value="weekends">Вихідні дні</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="calculate-options">Вибір діапазону</label>
+    <select id="calculate-options">
+      <option value="days">Порахувати кількість днів</option>
+      <option value="hours">Порахувати кількість годин</option>
+      <option value="minutes">Порахувати кількість хвилин</option>
+      <option value="seconds">Порахувати кількість секунд</option>
+    </select>
+  </div>
+
+  <button class="button">Davay</button>
+
+  <p id="result"></p>
+
+</div>
+
+<script src='FirstTab.js'></script>
+
+</body>
+
+</html>

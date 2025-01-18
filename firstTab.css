@@ -2,34 +2,72 @@ body {
     background-color: #f4f4f9;
 }
 
-.main-container {
+.full-page {
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-direction: column;
 }
 
-.container {
+.main-container {
     background-color: #fff;
-    width: 100%;
-    max-width: 400px;
-    gap: 15px;
+    width: 25%;
+    min-height: 80%;
     display: flex;
     flex-direction: column;
 }
 
-.container h1 {
+.main-container h1 {
     margin-top: 15px;
     text-align: center;
     font-size: 22px;
     font-weight: bold;
-    font-family: Arial, sans-serif;
+    font-family: "Comic Sans MS", sans-serif;
+}
+
+.input-space {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    border: 1px solid #FFB74D;
+    border-radius: 10px;
+    margin: 0 10px 15px 10px;
+    padding: 10px;
+}
+
+.output-space {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    border: 1px solid #FFB74D;
+    border-radius: 10px;
+    margin: 0 10px 15px 10px;
+    padding: 10px;
+}
+
+.button {
+    font-weight: bold;
+    font-family: Andale Mono, monospace;
+    width: 50%;
+    height: 30px;
+    border-radius: 5px;
+    border-color: blueviolet;
+    background-color: navy;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.5s;
+}
+
+#result {
+    margin: 0;
+    font-family: "Comic Sans MS", sans-serif;
+    font-size: 20px;
 }
 
 .form-group label {
     display: block;
     font-weight: bold;
-    font-family: Arial, sans-serif;
+    font-family: "Comic Sans MS", sans-serif;
 }
 
 .form-group input,
@@ -43,8 +81,67 @@ body {
 
 .form-group select {
     background-color: lavender;
+    font-family: "Comic Sans MS", sans-serif;
 }
 
 .form-group input {
     background-color: ivory;
+    font-family: "Comic Sans MS", sans-serif;
+}
+
+table {
+    margin: 20px 0; /* Додає відступи зверху і знизу */
+    font-size: 15px; /* Розмір шрифту для тексту в таблиці */
+    text-align: center;
+    border: 2px solid #4CAF50; /* Товстий зелений зовнішній кордон таблиці */
+    border-collapse: collapse;
+    font-family: Bradley Hand, cursive;
+}
+
+table thead th {
+    background-color: #4CAF50; /* Фон заголовка */
+    color: white; /* Білий текст */
+    padding: 8px; /* Внутрішні відступи */
+    border: 1px solid #ddd; /* Межа між комірками */
+    font-size: 18px;
+}
+
+table th, table td {
+    border: 2px solid #4CAF50; /* Товсті зелені кордони для кожної комірки */
+    padding: 10px; /* Відступи всередині комірок */
+    text-align: center; /* Вирівнювання тексту по центру */
+}
+
+table thead th:nth-child(1), /* Перший стовпець "First Date" */
+table thead th:nth-child(2) { /* Другий стовпець "Second Date" */
+    width: 120px; /* Фіксована ширина */
+}
+
+table thead th:nth-child(3) {
+    width: auto; /* Гнучка ширина */
+    min-width: 120px;
+}
+
+/* Рядки таблиці */
+table tbody tr {
+    border: 1px solid #ddd; /* Межа між рядками */
+}
+
+/* Чергування кольору для рядків */
+table tbody tr:nth-child(odd) {
+    background-color: #f9f9f9; /* Світло-сірий фон для непарних рядків */
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #ffffff; /* Білий фон для парних рядків */
+}
+
+/* Комірки таблиці */
+table tbody td {
+    padding: 3px; /* Внутрішні відступи */
+}
+
+/* Ховер-ефект для рядків */
+table tbody tr:hover {
+    background-color: #f1f1f1; /* Світло-сірий фон при наведенні */
 }

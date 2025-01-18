@@ -98,10 +98,18 @@ function createTableVisibility() {
         const row = document.createElement('tr');
 
         const startDateCell = document.createElement('td');
-        startDateCell.textContent = start;
+        startDateCell.textContent = new Date(start).toLocaleDateString('en', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
 
         const endDateCell = document.createElement('td');
-        endDateCell.textContent = end;
+        endDateCell.textContent = new Date(end).toLocaleDateString('en', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
 
         const resultCell = document.createElement('td');
         resultCell.textContent = result;

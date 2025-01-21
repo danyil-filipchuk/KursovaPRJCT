@@ -1,0 +1,49 @@
+html, body {
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    background-color: #121212;
+}
+
+#app1 {
+    height: 80vh;
+    margin: 50px 50px 0 50px;
+}
+
+iframe {
+    width: 100%;
+    height: 100%;
+}
+
+.button-container {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border: 2px solid #03dac5;
+    border-radius: 25px;
+    background: linear-gradient(145deg, #1f1f1f, #2a2a2a);
+    color: #03dac5;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(3, 218, 197, 0.4);
+    transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+    background: #03dac5;
+    color: #121212;
+    box-shadow: 0 6px 20px rgba(3, 218, 197, 0.6);
+}
+
+button:focus {
+    outline: none;
+    border-color: #bb86fc;
+    box-shadow: 0 6px 20px rgba(187, 134, 252, 0.6);
+}

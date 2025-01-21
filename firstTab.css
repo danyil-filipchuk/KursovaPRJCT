@@ -1,4 +1,4 @@
-body {
+html, body {
     background-color: #f4f4f9;
 }
 
@@ -30,7 +30,7 @@ body {
     gap: 15px;
     border: 1px solid #FFB74D;
     border-radius: 10px;
-    margin: 0 10px 15px 10px;
+    margin: 10px 10px 15px 10px;
     padding: 10px;
 }
 
@@ -114,12 +114,12 @@ table th, table td {
 
 table thead th:nth-child(1), /* Перший стовпець "First Date" */
 table thead th:nth-child(2) { /* Другий стовпець "Second Date" */
-    width: 120px; /* Фіксована ширина */
+    width: 130px; /* Фіксована ширина */
 }
 
 table thead th:nth-child(3) {
     width: auto; /* Гнучка ширина */
-    min-width: 120px;
+    min-width: 130px;
 }
 
 /* Рядки таблиці */

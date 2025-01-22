@@ -9,8 +9,9 @@ html, body {
 }
 
 .main-container {
+    margin-top: 20px;
     background-color: #fff;
-    width: 25%;
+    width: 35%;
     min-height: 80%;
     display: flex;
     flex-direction: column;
@@ -19,12 +20,13 @@ html, body {
 .main-container h1 {
     margin-top: 15px;
     text-align: center;
-    font-size: 22px;
+    font-size: 26px;
     font-weight: bold;
     font-family: "Comic Sans MS", sans-serif;
 }
 
 .input-space {
+    font-size: 18px;
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -45,23 +47,28 @@ html, body {
     padding: 10px;
 }
 
+#preset, #day-options, #calculate-options {
+    font-size: 15px;
+}
+
 .button {
     font-weight: bold;
     font-family: Andale Mono, monospace;
     width: 50%;
-    height: 30px;
+    height: 40px;
     border-radius: 5px;
     border-color: blueviolet;
     background-color: navy;
     color: white;
     cursor: pointer;
+    font-size: 20px;
     transition: background-color 0.5s;
 }
 
 #result {
     margin: 0;
     font-family: "Comic Sans MS", sans-serif;
-    font-size: 20px;
+    font-size: 23px;
 }
 
 .form-group label {
@@ -90,58 +97,55 @@ html, body {
 }
 
 table {
-    margin: 20px 0; /* Додає відступи зверху і знизу */
-    font-size: 15px; /* Розмір шрифту для тексту в таблиці */
+    margin: 20px 0;
     text-align: center;
-    border: 2px solid #4CAF50; /* Товстий зелений зовнішній кордон таблиці */
+    border: 2px solid #0ff; /* Неоновий блакитний зовнішній кордон */
     border-collapse: collapse;
     font-family: Bradley Hand, cursive;
+    background-color: #1b1b1b; /* Темний фон таблиці */
+    color: #0ff; /* Неоновий текст */
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.7); /* Неоновий ефект */
 }
 
 table thead th {
-    background-color: #4CAF50; /* Фон заголовка */
-    color: white; /* Білий текст */
-    padding: 8px; /* Внутрішні відступи */
-    border: 1px solid #ddd; /* Межа між комірками */
-    font-size: 18px;
+    background-color: #121212; /* Темніший фон для заголовка */
+    color: #0ff; /* Неоновий текст */
+    padding: 0;
+    border: 2px solid #0ff; /* Неоновий кордон заголовка */
+    font-size: 22px;
 }
 
 table th, table td {
-    border: 2px solid #4CAF50; /* Товсті зелені кордони для кожної комірки */
-    padding: 10px; /* Відступи всередині комірок */
-    text-align: center; /* Вирівнювання тексту по центру */
+    border: 2px solid #0ff; /* Неонові кордони для кожної комірки */
+    padding: 0;
+    text-align: center;
 }
 
-table thead th:nth-child(1), /* Перший стовпець "First Date" */
-table thead th:nth-child(2) { /* Другий стовпець "Second Date" */
-    width: 130px; /* Фіксована ширина */
-}
-
-table thead th:nth-child(3) {
-    width: auto; /* Гнучка ширина */
-    min-width: 130px;
-}
-
-/* Рядки таблиці */
-table tbody tr {
-    border: 1px solid #ddd; /* Межа між рядками */
-}
-
-/* Чергування кольору для рядків */
 table tbody tr:nth-child(odd) {
-    background-color: #f9f9f9; /* Світло-сірий фон для непарних рядків */
+    background-color: #2c2c2c; /* Темний сірий для непарних рядків */
 }
 
 table tbody tr:nth-child(even) {
-    background-color: #ffffff; /* Білий фон для парних рядків */
+    background-color: #1e1e1e; /* Темний для парних рядків */
 }
 
-/* Комірки таблиці */
-table tbody td {
-    padding: 3px; /* Внутрішні відступи */
-}
-
-/* Ховер-ефект для рядків */
 table tbody tr:hover {
-    background-color: #f1f1f1; /* Світло-сірий фон при наведенні */
+    background-color: #333; /* Трохи світліший фон при наведенні */
+    box-shadow: 0 0 10px #0ff; /* Додаткове світіння при наведенні */
+}
+
+table tbody td {
+    color: #e0f7fa; /* М'який неоновий текст */
+    padding: 0;
+    font-size: 18px;
+}
+
+table thead th:nth-child(1),
+table thead th:nth-child(2) {
+    width: 180px;
+}
+
+table thead th:nth-child(3) {
+    width: auto;
+    min-width: 180px;
 }

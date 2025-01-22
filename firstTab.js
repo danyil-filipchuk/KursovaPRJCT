@@ -43,30 +43,28 @@ buttonCalculate.addEventListener('click', () => {
         return;
     }
 
-    const startDate = new Date(start.value);
-    const endDate = new Date(end.value);
-    const difference = endDate - startDate;
-
-    let copyStartDate = new Date(startDate);
     let sumOfDays = 0;
-    let selectedDays = typeDays.value;
+    let startDate = new Date(start.value);
+    const endDate = new Date(end.value);
 
-    while (copyStartDate <= endDate) {
-        const dayOfWeek = copyStartDate.getDay();
 
-        if (selectedDays === 'all' ||
-            (selectedDays === 'weekdays' && dayOfWeek >= 1 && dayOfWeek <= 5) ||
-            (selectedDays === 'weekends' && (dayOfWeek === 0 || dayOfWeek === 6))) {
+    while (startDate < endDate) {
+        const dayOfWeek = startDate.getDay();
+
+        if (typeDays.value === 'all') {
+            sumOfDays++;
+        } else if ((typeDays.value === 'weekdays') && (dayOfWeek >= 1 && dayOfWeek <= 5)) {
+            sumOfDays++;
+        } else if ((typeDays.value === 'weekends') && (dayOfWeek === 0 || dayOfWeek === 6)) {
             sumOfDays++;
         }
-        copyStartDate.setDate(copyStartDate.getDate() + 1);
+        startDate.setDate(startDate.getDate() + 1);
     }
 
-    const seconds = 24 * 60 * 60;
-    const minutes = 24 * 60;
-    const hours = 24;
-
     let calculation;
+    const hours = 24;
+    const minutes = 24 * 60;
+    const seconds = 24 * 60 * 60;
 
     if (optionDate.value === 'seconds') {
         calculation = (sumOfDays * seconds) + ' seconds';
@@ -110,26 +108,26 @@ function createTableVisibility() {
     results.forEach(({start, end, result}) => {
         const row = document.createElement('tr');
 
-        const startDateCell = document.createElement('td');
-        startDateCell.textContent = new Date(start).toLocaleDateString('en', {
+        const startDateInfo = document.createElement('td');
+        startDateInfo.textContent = new Date(start).toLocaleDateString('en', {
             year: 'numeric',
             month: 'long',
             day: 'numeric'
         });
 
-        const endDateCell = document.createElement('td');
-        endDateCell.textContent = new Date(end).toLocaleDateString('en', {
+        const endDateInfo = document.createElement('td');
+        endDateInfo.textContent = new Date(end).toLocaleDateString('en', {
             year: 'numeric',
             month: 'long',
             day: 'numeric'
         });
 
-        const resultCell = document.createElement('td');
-        resultCell.textContent = result;
+        const resultInfo = document.createElement('td');
+        resultInfo.textContent = result;
 
-        row.appendChild(startDateCell);
-        row.appendChild(endDateCell);
-        row.appendChild(resultCell);
+        row.appendChild(startDateInfo);
+        row.appendChild(endDateInfo);
+        row.appendChild(resultInfo);
         tableResults.appendChild(row);
     })
 }

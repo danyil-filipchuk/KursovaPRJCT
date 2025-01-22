@@ -45,27 +45,40 @@ buttonCalculate.addEventListener('click', () => {
 
     const startDate = new Date(start.value);
     const endDate = new Date(end.value);
-
     const difference = endDate - startDate;
 
-    const seconds = 1000;
-    const minutes = 1000 * 60;
-    const hours = 1000 * 60 * 60;
-    const days = 1000 * 60 * 60 * 24;
+    let copyStartDate = new Date(startDate);
+    let sumOfDays = 0;
+    let selectedDays = typeDays.value;
+
+    while (copyStartDate <= endDate) {
+        const dayOfWeek = copyStartDate.getDay();
+
+        if (selectedDays === 'all' ||
+            (selectedDays === 'weekdays' && dayOfWeek >= 1 && dayOfWeek <= 5) ||
+            (selectedDays === 'weekends' && (dayOfWeek === 0 || dayOfWeek === 6))) {
+            sumOfDays++;
+        }
+        copyStartDate.setDate(copyStartDate.getDate() + 1);
+    }
+
+    const seconds = 24 * 60 * 60;
+    const minutes = 24 * 60;
+    const hours = 24;
 
     let calculation;
 
     if (optionDate.value === 'seconds') {
-        calculation = (difference / seconds) + ' seconds';
+        calculation = (sumOfDays * seconds) + ' seconds';
     }
     if (optionDate.value === 'minutes') {
-        calculation = (difference / minutes) + ' minutes';
+        calculation = (sumOfDays * minutes) + ' minutes';
     }
     if (optionDate.value === 'hours') {
-        calculation = (difference / hours) + ' hours';
+        calculation = (sumOfDays * hours) + ' hours';
     }
     if (optionDate.value === 'days') {
-        calculation = (difference / days) + ' days';
+        calculation = sumOfDays + ' days';
     }
 
     outputResult.textContent = `Result: ${calculation}`

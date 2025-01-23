@@ -1,5 +1,5 @@
 html, body {
-    background-color: #f4f4f9;
+    background: linear-gradient(to bottom right, midnightblue, navy, black);
 }
 
 .full-page {
@@ -9,12 +9,13 @@ html, body {
 }
 
 .main-container {
-    margin-top: 20px;
+    margin-top: 10px;
     background-color: #fff;
     width: 35%;
     min-height: 80%;
     display: flex;
     flex-direction: column;
+    border-radius: 20px;
 }
 
 .main-container h1 {
@@ -102,7 +103,7 @@ table {
     border: 2px solid #0ff; /* Неоновий блакитний зовнішній кордон */
     border-collapse: collapse;
     font-family: Bradley Hand, cursive;
-    background-color: #1b1b1b; /* Темний фон таблиці */
+    background-color: #ffffff; /* Темний фон таблиці */
     color: #0ff; /* Неоновий текст */
     box-shadow: 0 0 10px rgba(0, 255, 255, 0.7); /* Неоновий ефект */
 }
@@ -122,15 +123,15 @@ table th, table td {
 }
 
 table tbody tr:nth-child(odd) {
-    background-color: #2c2c2c; /* Темний сірий для непарних рядків */
+    background-color: royalblue; /* Темний сірий для непарних рядків */
 }
 
 table tbody tr:nth-child(even) {
-    background-color: #1e1e1e; /* Темний для парних рядків */
+    background-color: midnightblue; /* Темний для парних рядків */
 }
 
 table tbody tr:hover {
-    background-color: #333; /* Трохи світліший фон при наведенні */
+    background-color: #03403c; /* Трохи світліший фон при наведенні */
     box-shadow: 0 0 10px #0ff; /* Додаткове світіння при наведенні */
 }
 

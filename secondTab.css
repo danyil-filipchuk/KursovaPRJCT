@@ -1,0 +1,76 @@
+html, body {
+    background: #004e92;
+}
+
+.full-page {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.main-container {
+    margin-top: 10px;
+    background-color: #fff;
+    width: 35%;
+    min-height: 80%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+}
+
+.main-container h1 {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 26px;
+    font-weight: bold;
+    font-family: "Comic Sans MS", sans-serif;
+}
+
+.input-space {
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    border: 1px solid #FFB74D;
+    border-radius: 10px;
+    margin: 10px 10px 15px 10px;
+    padding: 10px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    font-family: "Comic Sans MS", sans-serif;
+}
+
+.form-group select {
+    width: 100%;
+    padding: 8px;
+    font-size: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: lavender;
+    font-family: "Comic Sans MS", sans-serif;
+}
+
+button {
+    align-self: center;
+    font-weight: bold;
+    font-family: Andale Mono, monospace;
+    width: 50%;
+    height: 40px;
+    border-radius: 5px;
+    border-color: blueviolet;
+    background-color: navy;
+    color: white;
+    cursor: pointer;
+    font-size: 20px;
+    transition: background-color 0.5s;
+}

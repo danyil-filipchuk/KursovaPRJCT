@@ -51,7 +51,7 @@ html, body {
     border: 1px solid #FFB74D;
     border-radius: 10px;
     margin: 10px 10px 15px 10px;
-    padding: 10px 10px 0 10px;
+    padding: 10px;
 }
 
 label {
@@ -91,4 +91,15 @@ button {
     cursor: pointer;
     font-size: 20px;
     transition: background-color 0.5s;
+}
+
+#results-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#results-table tr th {
+    border: 1px solid black;
+    padding: 8px;
+    background-color: lavender
 }

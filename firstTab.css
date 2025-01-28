@@ -1,5 +1,6 @@
 html, body {
-    background: linear-gradient(to bottom right, #000428, #004e92, #0f2027);
+    background-image: linear-gradient(to bottom right, #000428, #004e92, #0f2027);
+    background-attachment: fixed
 }
 
 .full-page {

@@ -4,97 +4,94 @@
 document.addEventListener('DOMContentLoaded', createTableVisibility);
 
 // Селектори на HTML елементи:
-const start = document.querySelector('#start-date');
-const end = document.querySelector('#end-date');
-const preset = document.querySelector('#preset');
-const typeDays = document.querySelector('#day-options');
-const optionDate = document.querySelector('#calculate-options');
-const buttonCalculate = document.querySelector('.button');
+const firstDate = document.querySelector('#start-date');
+const secondDate = document.querySelector('#end-date');
+const presetType = document.querySelector('#preset');
+const calculateButton = document.querySelector('.button');
 const outputResult = document.querySelector('#result');
 
 // Лісенер зміни першої дати, "відкриває" вибір другої дати та встановлює її мінімальне значення:
-start.addEventListener('change', () => {
-    end.disabled = false;
-    end.min = start.value;
+firstDate.addEventListener('change', () => {
+    secondDate.disabled = false;
+    secondDate.min = firstDate.value;
 })
 
 // Лісенер вибору пресету:
-preset.addEventListener('change', () => {
-    const startDate = new Date(start.value);
-    let changedDate;
+presetType.addEventListener('change', () => {
+    const startDate = new Date(firstDate.value);
 
     // Якщо перша дата не вибрана:
-    if (!start.value) {
-        outputResult.textContent = 'Please select start date';
+    if (!firstDate.value) {
+        outputResult.textContent = 'Please select first date';
         return;
     }
 
-    if (preset.value === 'week') { // Додає 7 днів при умові вибору відповідного пресету
-        changedDate = new Date(startDate.setDate(startDate.getDate() + 7));
+    if (presetType.value === 'week') { // Додає 7 днів при умові вибору відповідного пресету
+        startDate.setDate(startDate.getDate() + 7);
+        secondDate.value = startDate.toISOString().split('T')[0];
     }
-    else if (preset.value === 'month') { // Додає 30 днів при умові вибору відповідного пресету
-        changedDate = new Date(startDate.setDate(startDate.getDate() + 30));
-    }
-
-    // Якщо пресет вибраний та відповідна змінна має якесь значення, то оновлюємо значення другої дати з відповідним форматуванням.
-    // Знайшов такий варіант форматування для вірного "занесення" в інпут-календар.
-    if (changedDate) {
-        end.value = changedDate.toISOString().split('T')[0];
+    if (presetType.value === 'month') { // Додає 30 днів при умові вибору відповідного пресету
+        startDate.setDate(startDate.getDate() + 30);
+        secondDate.value = startDate.toISOString().split('T')[0];
     }
 })
 
-// Лісенер кнопки прорахунку:
-buttonCalculate.addEventListener('click', () => {
-
-    // Якщо одна з дат не вибрана:
-    if (!start.value || !end.value) {
-        outputResult.textContent = 'Please select both dates'
-        return;
-    }
-
+function calculateDayType () {
     let sumOfDays = 0; // Змінна\лічильник для нарахування днів
-    let startDate = new Date(start.value);
-    const endDate = new Date(end.value);
+    let startDate = new Date(firstDate.value);
+    const endDate = new Date(secondDate.value);
+    const dayType = document.querySelector('#day-options');
 
     // Цикл для прорахунку днів днів:
     while (startDate < endDate) { // Умова циклу
         const dayOfWeek = startDate.getDay(); // Отримання індексу дня (від 0 до 6)
 
-        if (typeDays.value === 'all') { // Всі дні:
+        if (dayType.value === 'all') { // Всі дні:
             sumOfDays++;
-        } else if ((typeDays.value === 'weekdays') && (dayOfWeek >= 1 && dayOfWeek <= 5)) { // Тільки будні дні:
+        } else if ((dayType.value === 'weekdays') && (dayOfWeek >= 1 && dayOfWeek <= 5)) { // Тільки будні дні:
             sumOfDays++;
-        } else if ((typeDays.value === 'weekends') && (dayOfWeek === 0 || dayOfWeek === 6)) { // Тільки вихідні дні:
+        } else if ((dayType.value === 'weekends') && (dayOfWeek === 0 || dayOfWeek === 6)) { // Тільки вихідні дні:
             sumOfDays++;
         }
         // Після першого "проходу" переключаємо на наступний день до тих пір, поки не дійдемо до умови:
         startDate.setDate(startDate.getDate() + 1);
     }
+    return sumOfDays;
+}
 
-    let calculation; // Змінна для збереження прорахунку
-    const hours = 24; // Кількість годин в одному дні
-    const minutes = 24 * 60; // Кількість хвилин в одному дні
-    const seconds = 24 * 60 * 60; // Кількість секунд в одному дні
+function calculateResult (unit, sumOfDays) {
+    const hours = 24;
+    const minutes = 24 * 60;
+    const seconds = 24 * 60 * 60;
 
-    // Прорахунок згідно з вибраного варіанту:
-    if (optionDate.value === 'seconds') {
-        calculation = (sumOfDays * seconds) + ' seconds';
+    const unitToValueMapping = {
+        seconds: (sumOfDays * seconds) + ' seconds',
+        minutes: (sumOfDays * minutes) + ' minutes',
+        hours: (sumOfDays * hours) + ' hours',
+        days: sumOfDays + ' days'
     }
-    if (optionDate.value === 'minutes') {
-        calculation = (sumOfDays * minutes) + ' minutes';
+    return unitToValueMapping[unit];
+}
+
+// Лісенер кнопки прорахунку:
+calculateButton.addEventListener('click', () => {
+
+    // Якщо одна з дат не вибрана:
+    if (!firstDate.value || !secondDate.value) {
+        outputResult.textContent = 'Please select both dates'
+        return;
     }
-    if (optionDate.value === 'hours') {
-        calculation = (sumOfDays * hours) + ' hours';
-    }
-    if (optionDate.value === 'days') {
-        calculation = sumOfDays + ' days';
-    }
+
+    const rangeSelectionType = document.querySelector('#calculate-options').value;
+
+    const calculation = calculateResult(rangeSelectionType, calculateDayType());
 
     // Виведення результату на сторінку:
     outputResult.textContent = `Result: ${calculation}`
 
     // Зберігаємо результати в наш localStorage для виведення в таблицю:
-    storeResultsInLocalStorage(start.value, end.value, calculation);
+    storeResultsInLocalStorage(firstDate.value, secondDate.value, calculation);
+
     // Оновлюємо дані в таблиці:
     createTableVisibility();
 })

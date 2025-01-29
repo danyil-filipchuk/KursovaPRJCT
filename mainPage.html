@@ -15,7 +15,11 @@
         <button onclick="showTab('app2')">Calendar of Saints</button>
     </div>
 
-    <div id="app1" class="app-container" style="display: block;">
+    <div id="default-message" class="default-container">
+        <h2>Please select needed app</h2>
+    </div>
+
+    <div id="app1" class="app-container" style="display: none;">
         <iframe src="firstTab.html"></iframe>
     </div>
 
@@ -28,6 +32,8 @@
 
 <script>
     function showTab(tabId) {
+        document.querySelector('#default-message').style.display = 'none';
+
         document.querySelectorAll('.app-container').forEach(tab => {
             tab.style.display = 'none';
         });

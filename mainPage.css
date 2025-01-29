@@ -5,6 +5,15 @@ html, body {
     background: linear-gradient(to bottom right, #1b2735, #090a0f, #3b5360);
 }
 
+.default-container {
+    color: floralwhite;
+    border: 3px solid #1b2735;
+    padding: 10px;
+    margin-top: 40px;
+    border-radius: 8px;
+    font-family: Andale Mono, monospace;
+}
+
 .main-container {
     overflow: hidden;
     width: 100%;
@@ -35,7 +44,7 @@ iframe {
 
 button {
     padding: 10px 20px;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: bold;
     border: 2px solid #03dac5;
     border-radius: 25px;
@@ -44,6 +53,7 @@ button {
     cursor: pointer;
     box-shadow: 0 4px 15px rgba(3, 218, 197, 0.4);
     transition: all 0.3s ease-in-out;
+    font-family: Andale Mono, monospace;
 }
 
 button:hover {

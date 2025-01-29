@@ -11,7 +11,7 @@ html, body {
 
 .main-container {
     margin-top: 10px;
-    background-color: #fff;
+    background: linear-gradient(to right bottom, ghostwhite, #ffffff);
     width: 35%;
     min-height: 80%;
     display: flex;
@@ -32,7 +32,7 @@ html, body {
     display: flex;
     flex-direction: column;
     gap: 15px;
-    border: 1px solid #FFB74D;
+    border: 3px solid #000428;
     border-radius: 10px;
     margin: 10px 10px 15px 10px;
     padding: 10px;
@@ -43,7 +43,7 @@ html, body {
     flex-direction: column;
     align-items: center;
     gap: 15px;
-    border: 1px solid #FFB74D;
+    border: 3px solid #000428;
     border-radius: 10px;
     margin: 0 10px 15px 10px;
     padding: 10px;
@@ -89,12 +89,12 @@ html, body {
 }
 
 .form-group select {
-    background-color: lavender;
+    background-color: #dfdfed;
     font-family: "Comic Sans MS", sans-serif;
 }
 
 .form-group input {
-    background-color: ivory;
+    background-color: whitesmoke;
     font-family: "Comic Sans MS", sans-serif;
 }
 
@@ -124,7 +124,7 @@ table th, table td {
 }
 
 table tbody tr:nth-child(odd) {
-    background-color: royalblue;
+    background-color: #1f3a8e;
 }
 
 table tbody tr:nth-child(even) {

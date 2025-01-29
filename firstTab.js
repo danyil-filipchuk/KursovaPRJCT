@@ -36,13 +36,16 @@ presetType.addEventListener('change', () => {
     }
 })
 
-function calculateDayType () {
+// Нова функція, ці дії раніше були в Лісенері кнопки, виніс окремо та на всяк випадок з аргументами та параметрами.
+function calculateDayType (firstDateValue, secondDateValue) {
     let sumOfDays = 0; // Змінна\лічильник для нарахування днів
-    let startDate = new Date(firstDate.value);
-    const endDate = new Date(secondDate.value);
+    let startDate = new Date(firstDateValue);
+    const endDate = new Date(secondDateValue);
+
+    // Отримання селектору на HTML елемент, локально в цьому Лісенері
     const dayType = document.querySelector('#day-options');
 
-    // Цикл для прорахунку днів днів:
+    // Цикл для прорахунку днів:
     while (startDate < endDate) { // Умова циклу
         const dayOfWeek = startDate.getDay(); // Отримання індексу дня (від 0 до 6)
 
@@ -53,12 +56,13 @@ function calculateDayType () {
         } else if ((dayType.value === 'weekends') && (dayOfWeek === 0 || dayOfWeek === 6)) { // Тільки вихідні дні:
             sumOfDays++;
         }
-        // Після першого "проходу" переключаємо на наступний день до тих пір, поки не дійдемо до умови:
+        // Після першого "проходу" перемикаємо на наступний день до тих пір, поки не дійдемо до умови:
         startDate.setDate(startDate.getDate() + 1);
     }
-    return sumOfDays;
+    return sumOfDays; // повернення актуального результату змінної для того, щоб було можливо коректно отримувати результат функції в місці виклику
 }
 
+// Нова функція, як Ви порекомендували. Вирішив її вивести ззовні та окремо (можливо Ви так і мали на увазі). Класний спосіб, правда сидів певний час в нього вникав.
 function calculateResult (unit, sumOfDays) {
     const hours = 24;
     const minutes = 24 * 60;
@@ -82,9 +86,10 @@ calculateButton.addEventListener('click', () => {
         return;
     }
 
+    // Отримання селектору на HTML елемент, локально в цьому Лісенері
     const rangeSelectionType = document.querySelector('#calculate-options').value;
 
-    const calculation = calculateResult(rangeSelectionType, calculateDayType());
+    const calculation = calculateResult(rangeSelectionType, calculateDayType(firstDate.value, secondDate.value));
 
     // Виведення результату на сторінку:
     outputResult.textContent = `Result: ${calculation}`
@@ -106,7 +111,7 @@ function storeResultsInLocalStorage(start, end, result) {
     // При кожному виклику функції додаємо нові результати (ті що передали в аргументи):
     results.push({start,end,result});
 
-    // Умова перевірки кількості результатів, якщо більше 10 - то видаляється найстаріший:
+    // Умова перевірки кількості результатів, якщо понад 10 - то видаляється найстаріший:
     if (results.length > 10) {
         results.shift();
     }
@@ -151,9 +156,9 @@ function createTableVisibility() {
         const resultInfo = document.createElement('td');
         resultInfo.textContent = result;
 
-        row.appendChild(startDateInfo); // Додавання "комірки" до рядку
-        row.appendChild(endDateInfo); // Додавання "комірки" до рядку
-        row.appendChild(resultInfo); // Додавання "комірки" до рядку
-        tableResults.appendChild(row); // Додавання рядку до HTMl елементу
+        row.appendChild(startDateInfo); // Додавання "комірки" до рядка
+        row.appendChild(endDateInfo); // Додавання "комірки" до рядка
+        row.appendChild(resultInfo); // Додавання "комірки" до рядка
+        tableResults.appendChild(row); // Додавання рядка до HTMl елементу
     })
 }

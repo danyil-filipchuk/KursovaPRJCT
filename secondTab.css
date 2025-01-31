@@ -44,6 +44,18 @@ html, body {
     padding: 10px 10px 0 10px;
 }
 
+.error-space {
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #FFB74D;
+    border-radius: 10px;
+    margin: 10px 10px 15px 10px;
+    padding: 10px 10px 0 10px;
+    text-align: center;
+    color: red;
+}
+
 .output-space {
     font-size: 18px;
     display: flex;
@@ -98,8 +110,56 @@ button {
     border-collapse: collapse;
 }
 
-#results-table tr th {
-    border: 1px solid black;
-    padding: 8px;
-    background-color: lavender
+table {
+    margin: 20px 0;
+    text-align: center;
+    border: 2px solid #0ff;
+    border-collapse: collapse;
+    font-family: Bradley Hand, cursive;
+    background-color: #ffffff;
+    color: #0ff;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
+}
+
+table thead th {
+    background-color: #121212;
+    color: #0ff;
+    padding: 0;
+    border: 2px solid #0ff;
+    font-size: 22px;
+}
+
+table th, table td {
+    border: 2px solid #0ff;
+    padding: 0;
+    text-align: center;
+}
+
+table tbody tr:nth-child(odd) {
+    background-color: #1f3a8e;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: midnightblue;
+}
+
+table tbody tr:hover {
+    background-color: #03403c;
+    box-shadow: 0 0 10px #0ff;
+}
+
+.hidden-table {
+    display: none;
+}
+
+.visible-table {
+    display: block;
+}
+
+.hidden-error {
+    display: none;
+}
+
+.visible-error {
+    display: block;
 }

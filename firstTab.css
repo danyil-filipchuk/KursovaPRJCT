@@ -71,6 +71,7 @@ html, body {
     margin: 0;
     font-family: "Comic Sans MS", sans-serif;
     font-size: 23px;
+    text-align: center;
 }
 
 .form-group label {

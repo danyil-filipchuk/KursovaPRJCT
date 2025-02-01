@@ -16,7 +16,7 @@ html, body {
 }
 
 .main-container {
-    margin-top: 10px;
+    margin-top: 18px;
     background-color: #fff;
     width: 35%;
     min-height: 80%;
@@ -38,7 +38,7 @@ html, body {
     display: flex;
     flex-direction: column;
     gap: 15px;
-    border: 1px solid #FFB74D;
+    border: 3px solid #000428;
     border-radius: 10px;
     margin: 10px 10px 15px 10px;
     padding: 10px 10px 0 10px;
@@ -47,12 +47,13 @@ html, body {
 #error-space {
     font-size: 18px;
     flex-direction: column;
-    border: 1px solid #FFB74D;
+    border: 3px solid red;
     border-radius: 10px;
     margin: 10px 10px 15px 10px;
     padding: 10px 10px 0 10px;
     text-align: center;
     color: red;
+    font-family: "Comic Sans MS", sans-serif;
 }
 
 label {
@@ -74,7 +75,7 @@ label {
     border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box;
-    background-color: lavender;
+    background-color: #dfdfed;
     font-family: "Comic Sans MS", sans-serif;
 }
 
@@ -100,7 +101,6 @@ label {
 }
 
 table {
-    margin: 20px 0;
     text-align: center;
     border: 2px solid #0ff;
     border-collapse: collapse;
@@ -116,6 +116,7 @@ table thead th {
     padding: 0;
     border: 2px solid #0ff;
     font-size: 22px;
+    min-width: 250px;
 }
 
 table th, table td {
@@ -151,4 +152,20 @@ table tbody tr:hover {
 
 .visible-table {
     display: block;
+}
+
+.sort-button {
+    cursor: pointer;
+    font-size: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Bradley Hand, cursive;
+    height: 32px;
+    padding: 0 5px 0 5px;
+    margin: 10px 0 10px 0;
+}
+
+.array {
+    margin: 0 0 5px 5px;
 }

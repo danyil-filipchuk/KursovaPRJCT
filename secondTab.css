@@ -78,7 +78,7 @@ label {
     font-family: "Comic Sans MS", sans-serif;
 }
 
-button {
+.main-button {
     align-self: center;
     font-weight: bold;
     font-family: Andale Mono, monospace;

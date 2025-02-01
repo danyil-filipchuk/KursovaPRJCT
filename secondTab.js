@@ -1,10 +1,10 @@
 'use strict'
 
+const API_KEY = 'AP0JuotKTwKywKGB42ZxIG1HuVKQq25s';
 const countryInput = document.querySelector('#country-select');
 const yearInput = document.querySelector('#year-select');
 const errorSpace = document.querySelector('#error-space');
 
-const API_KEY = 'AP0JuotKTwKywKGB42ZxIG1HuVKQq25s';
 const currentYear = new Date().getFullYear();
 
 for (let year = 2001; year <= 2049; year++) {
@@ -15,6 +15,17 @@ for (let year = 2001; year <= 2049; year++) {
         option.selected = true;
     }
     yearInput.appendChild(option);
+}
+
+function showError(message) {
+    errorSpace.innerHTML = `<p>${message}</p>`;
+    errorSpace.classList.remove('hidden-error');
+    errorSpace.classList.add('visible-error');
+}
+
+function clearError () {
+    errorSpace.classList.remove('visible-error');
+    errorSpace.classList.add('hidden-error');
 }
 
 fetch(`https://calendarific.com/api/v2/countries?api_key=${API_KEY}`)
@@ -42,12 +53,13 @@ fetch(`https://calendarific.com/api/v2/countries?api_key=${API_KEY}`)
 document.querySelector('.button').addEventListener('click', () => {
     const countrySelect = countryInput.value;
     const yearSelect = yearInput.value;
-    const tableResults = document.querySelector('#results-table');
-    const outputSpace = document.querySelector('#table-head');
+    const tableResults = document.querySelector('#results-table tbody');
 
     if (!countrySelect || !yearSelect) {
         showError('Please select country and year');
         return;
+    } else {
+        clearError();
     }
 
     fetch(`https://calendarific.com/api/v2/holidays?api_key=${API_KEY}&country=${countrySelect}&year=${yearSelect}`)
@@ -58,9 +70,12 @@ document.querySelector('.button').addEventListener('click', () => {
             return response.json();
         })
         .then(data => {
-            outputSpace.classList.remove('hidden-table'); // Цей рядок додав всередину then, щоб не було затримки між з'явленням заголовка таблиці та її змістом.
-            outputSpace.classList.add('visible-table'); // Цей рядок додав всередину then, щоб не було затримки між з'явленням заголовка таблиці та її змістом.
+            const tableHead = document.querySelector('#table-head');
+            tableHead.classList.remove('hidden-table'); // Цей рядок додав всередину then, щоб не було затримки між з'явленням заголовка таблиці та її змістом.
+            tableHead.classList.add('visible-table'); // Цей рядок додав всередину then, щоб не було затримки між з'явленням заголовка таблиці та її змістом.
+
             tableResults.innerHTML = '';
+
             const holidays = data.response.holidays;
             holidays.forEach(holiday => {
                 const row = document.createElement('tr');
@@ -80,9 +95,3 @@ document.querySelector('.button').addEventListener('click', () => {
             })
         })
 })
-
-function showError(error) {
-    errorSpace.classList.remove('hidden-error');
-    errorSpace.classList.add('visible-error');
-    errorSpace.textContent = error;
-}

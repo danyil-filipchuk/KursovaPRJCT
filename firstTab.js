@@ -120,7 +120,7 @@
         // Створення змінної з останнім результатом в сховищі та таблиці
         const lastResult = results[results.length - 1];
         // Умова перевірки і зупинка виконання, якщо true
-        if (lastResult.start === start && lastResult.end === end && lastResult.result === result) {
+        if (lastResult && lastResult.start === start && lastResult.end === end && lastResult.result === result) {
             outputResult.textContent = 'Duplication of the last two calculations. Please select another options';
             return;
         }

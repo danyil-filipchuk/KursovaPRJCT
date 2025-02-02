@@ -1,0 +1,171 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-image: linear-gradient(to bottom right, #000428, #004e92, #0f2027);
+    background-attachment: fixed
+}
+
+.full-page {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.main-container {
+    margin-top: 18px;
+    background-color: #fff;
+    width: 35%;
+    min-height: 80%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+}
+
+.main-container h1 {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 26px;
+    font-weight: bold;
+    font-family: "Comic Sans MS", sans-serif;
+}
+
+.input-space {
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    border: 3px solid #000428;
+    border-radius: 10px;
+    margin: 10px 10px 15px 10px;
+    padding: 10px 10px 0 10px;
+}
+
+#error-space {
+    font-size: 18px;
+    flex-direction: column;
+    border: 3px solid red;
+    border-radius: 10px;
+    margin: 10px 10px 15px 10px;
+    padding: 10px 10px 0 10px;
+    text-align: center;
+    color: red;
+    font-family: "Comic Sans MS", sans-serif;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    font-family: "Comic Sans MS", sans-serif;
+}
+
+.form-group select {
+    width: 100%;
+    padding: 8px;
+    font-size: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: #dfdfed;
+    font-family: "Comic Sans MS", sans-serif;
+}
+
+.main-button {
+    align-self: center;
+    font-weight: bold;
+    font-family: Andale Mono, monospace;
+    width: 50%;
+    height: 40px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border-color: blueviolet;
+    background-color: navy;
+    color: white;
+    cursor: pointer;
+    font-size: 20px;
+    transition: background-color 0.5s;
+}
+
+#results-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table {
+    text-align: center;
+    border: 2px solid #0ff;
+    border-collapse: collapse;
+    font-family: Bradley Hand, cursive;
+    background-color: #ffffff;
+    color: #0ff;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
+}
+
+table thead th {
+    background-color: #121212;
+    color: #0ff;
+    padding: 0;
+    border: 2px solid #0ff;
+    font-size: 22px;
+    min-width: 250px;
+}
+
+table th, table td {
+    border: 2px solid #0ff;
+    padding: 0;
+    text-align: center;
+}
+
+table tbody tr:nth-child(odd) {
+    background-color: #1f3a8e;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: midnightblue;
+}
+
+table tbody tr:hover {
+    background-color: #03403c;
+    box-shadow: 0 0 10px #0ff;
+}
+
+.hidden-error {
+    display: none;
+}
+
+.visible-error {
+    display: block;
+}
+
+.hidden-table {
+    display: none;
+}
+
+.visible-table {
+    display: block;
+}
+
+.sort-button {
+    cursor: pointer;
+    font-size: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Bradley Hand, cursive;
+    height: 32px;
+    padding: 0 5px 0 5px;
+    margin: 10px 0 10px 0;
+}
+
+.array {
+    margin: 0 0 5px 5px;
+}

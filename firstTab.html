@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Duration Between Dates</title>
+  <link rel="stylesheet" href="firstTab.css">
+</head>
+
+<body>
+
+<div class="full-page">
+  <div class="main-container">
+
+    <h1>Duration Between Dates</h1>
+
+    <div class="input-space">
+
+      <div class="form-group">
+        <label for="start-date">First Date</label>
+        <input type="date" id="start-date">
+      </div>
+
+      <div class="form-group">
+        <label for="end-date">Second Date</label>
+        <input type="date" id="end-date" disabled>
+      </div>
+
+      <div class="form-group">
+        <label for="preset">Preset parameters</label>
+        <select id="preset">
+          <option value="">Without preset</option>
+          <option value="week">1 Week (7 days)</option>
+          <option value="month">1 Month (30 days)</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="day-options">Days parameters</label>
+        <select id="day-options">
+          <option value="all">All days</option>
+          <option value="weekdays">Weekdays</option>
+          <option value="weekends">Weekends</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="calculate-options">Range selection</label>
+        <select id="calculate-options">
+          <option value="days">Count the days</option>
+          <option value="hours">Count the hours</option>
+          <option value="minutes">Count the minutes</option>
+          <option value="seconds">Count the seconds</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="output-space">
+      <button class="button">CALCULATE</button>
+      <p id="result">Result:</p>
+    </div>
+
+</div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>First Date</th>
+        <th>Second Date</th>
+        <th>Result</th>
+      </tr>
+    </thead>
+    <tbody id="tableResults"></tbody>
+  </table>
+
+</div>
+
+<script src='firstTab.js'></script>
+
+</body>
+
+</html>

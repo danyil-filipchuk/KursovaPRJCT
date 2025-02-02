@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Projector - Two App</title>
+    <link rel="stylesheet" href="mainPage.css">
+</head>
+
+<body>
+
+<div class="main-container">
+
+    <div class="button-container">
+        <button onclick="showTab('app1')">Duration Between Dates</button>
+        <button onclick="showTab('app2')">Calendar of Saints</button>
+    </div>
+
+    <div id="default-message" class="default-container">
+        <h2>Please select needed app</h2>
+    </div>
+
+    <div id="app1" class="app-container" style="display: none;">
+        <iframe src="firstTab.html"></iframe>
+    </div>
+
+    <div id="app2" class="app-container" style="display: none;">
+        <iframe src="secondTab.html"></iframe>
+    </div>
+
+</div>
+
+
+<script>
+    function showTab(tabId) {
+        document.querySelector('#default-message').style.display = 'none';
+
+        document.querySelectorAll('.app-container').forEach(tab => {
+            tab.style.display = 'none';
+        });
+
+        document.getElementById(tabId).style.display = 'block';
+    }
+</script>
+</body>
+</html>

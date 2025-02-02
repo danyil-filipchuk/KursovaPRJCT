@@ -9,16 +9,20 @@
     const calculateButton = document.querySelector('.button');
     const outputResult = document.querySelector('#result');
 
+    if (!firstDate || !secondDate || !presetType || !calculateButton || !outputResult) {
+        alert('ONE OR MORE NEEDED ELEMENTS NO FOUND');
+        return;
+    }
+
     // Функція перевірки сховища:
     function updateLocalStorage() {
-        return localStorage.getItem('results') !== null
-            ? JSON.parse(localStorage.getItem('results')) : [];
+        return JSON.parse(localStorage.getItem('results') || '[]');
     }
 
     // Функція присвоєння до змінної результату функції про перевірку сховища і також виклик функції про вигляд таблиці (щоб відобразити в DOMContentLoaded):
     function initializationApp() {
         const results = updateLocalStorage();
-        createTableVisibility(results)
+        createTableVisibility(results);
     }
 
     // Лісенер зміни першої дати, "відкриває" вибір другої дати та встановлює її мінімальне значення:
@@ -56,6 +60,11 @@
         // Отримання селектору на HTML елемент, локально в цьому Лісенері
         const dayType = document.querySelector('#day-options');
 
+        if (!dayType) {
+            alert('DAY-OPTIONS NOT FOUND');
+            return;
+        }
+
         // Цикл для прорахунку днів:
         while (startDate < endDate) { // Умова циклу
             const dayOfWeek = startDate.getDay(); // Отримання індексу дня (від 0 до 6)
@@ -76,8 +85,8 @@
     // Нова функція, як Ви порекомендували. Вирішив її вивести ззовні та окремо (можливо Ви так і мали на увазі). Класний спосіб, правда сидів певний час в нього вникав.
     function calculateResult (unit, sumOfDays) {
         const hours = 24;
-        const minutes = 24 * 60;
-        const seconds = 24 * 60 * 60;
+        const minutes = hours * 60;
+        const seconds = minutes * 60;
 
         const unitToValueMapping = {
             seconds: (sumOfDays * seconds) + ' seconds',
@@ -97,23 +106,33 @@
             return;
         }
 
-        // Отримання селектору на HTML елемент, локально в цьому Лісенері
-        const rangeSelectionType = document.querySelector('#calculate-options').value;
+        // Встановлення максимальної кількості результатів в таблиці
+        const maxResults = 10;
 
-        const calculation = calculateResult(rangeSelectionType, calculateDayType(firstDate.value, secondDate.value));
+        // Отримання селектору на HTML елемент, локально в цьому Лісенері
+        const rangeSelectionType = document.querySelector('#calculate-options');
+
+        if (!rangeSelectionType) {
+            alert('RANGE-SELECTION NOT FOUND');
+            return;
+        }
+
+        const rangeSelectionTypeValue = rangeSelectionType.value;
+
+        const calculation = calculateResult(rangeSelectionTypeValue, calculateDayType(firstDate.value, secondDate.value));
 
         // Виведення результату на сторінку:
         outputResult.textContent = `Result: ${calculation}`
 
         // Зберігаємо результати в наш localStorage для виведення в таблицю:
-        storeResultsInLocalStorage(firstDate.value, secondDate.value, calculation);
+        storeResultsInLocalStorage(firstDate.value, secondDate.value, calculation, maxResults);
 
         // Оновлюємо дані в таблиці:
         initializationApp()
     })
 
     // Функція збереження результатів в localStorage:
-    function storeResultsInLocalStorage(start, end, result) {
+    function storeResultsInLocalStorage(start, end, result, maxResults) {
 
         // Присвоєння змінній результат виклику функції про перевірку сховища
         const results = updateLocalStorage();
@@ -129,7 +148,7 @@
         results.push({start,end,result});
 
         // Умова перевірки кількості результатів, якщо понад 10 - то видаляється найстаріший:
-        if (results.length > 10) {
+        if (results.length > maxResults) {
             results.shift();
         }
 
@@ -142,6 +161,12 @@
 
         // Селектор на HTMl елемент:
         const tableResults = document.querySelector('#tableResults');
+
+        if (!tableResults) {
+            alert('TABLE-RESULTS NOT FOUND (APP-1)');
+            return;
+        }
+
         tableResults.innerHTML = '';
 
         // Метод для роботи з кожним елементом нашого масиву:

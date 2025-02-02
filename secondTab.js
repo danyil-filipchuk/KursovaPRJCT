@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Функція з fetch, вивів її окремо разом, також передаються параметри - країна та рік
-    function tableFetchRequest(country, year) {
+    function tableFetchRequest(country, year, headTable) {
 
         fetch(`https://calendarific.com/api/v2/holidays?api_key=${API_KEY}&country=${country}&year=${year}`)
             .then(response => {
@@ -74,13 +74,11 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .then(data => {
                 const tableResults = document.querySelector('#results-table tbody');
-                const tableHead = document.querySelector('#output-space');
-
                 tableResults.innerHTML = ''; // Очищаємо попередні результати перед вставкою нових
 
                 // Ці рядки додав всередину then, щоб не було затримки між з'явленням заголовка таблиці та її змістом.
-                tableHead.classList.remove('hidden-table');
-                tableHead.classList.add('visible-table');
+                headTable.classList.remove('hidden-table');
+                headTable.classList.add('visible-table');
 
                 const holidays = data.response.holidays; // Отримуємо список свят
                 holidays.forEach(holiday => {
@@ -106,9 +104,8 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .catch(error => {
                 // На етапі тестування побачив баг, що разом із текстом помилки (у разі її наявності) з'являється і заголовок таблиці пустий без результатів, тому додав нові умови.
-                const tableHead = document.querySelector('#output-space');
-                tableHead.classList.remove('visible-table') // Забираємо клас видимості
-                tableHead.classList.add('hidden-table'); // Додаємо клас приховування
+                headTable.classList.remove('visible-table') // Забираємо клас видимості
+                headTable.classList.add('hidden-table'); // Додаємо клас приховування
                 // Виводимо повідомлення про помилку
                 showError('Failed to load holidays: ' + error.message);
             });
@@ -119,6 +116,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const countrySelect = countryInput.value; // Отримуємо значення країни
         const yearSelect = yearInput.value; // Отримуємо значення року
 
+        // Ця змінна у мене по коду залучена кілька разів в одній функції tableFetchRequest, тому вирішив її не дублювати, а скористатись як передачею аргументу
+        const tableHead = document.querySelector('#output-space');
+
         if (!countrySelect || !yearSelect) {
             showError('Please select country and year'); // Виводимо помилку, якщо не обрано значення
             return;
@@ -126,11 +126,11 @@ document.addEventListener('DOMContentLoaded', () => {
             clearError(); // Очищаємо помилки, якщо введені дані коректні
         }
         // Викликаємо функцію з fetch, аргументами слугують - значення країни та рік
-        tableFetchRequest(countrySelect, yearSelect)
+        tableFetchRequest(countrySelect, yearSelect, tableHead)
     })
 
-    // Лісенер кнопки сортування - одразу від селектора без створення зайвої змінної
-    document.querySelector('.sort-button').addEventListener('click', () => {
+    // Окрема функція сортування результатів
+    function sortTable() {
         // Отримаємо результати таблиці, які були створені раніше в функції tableFetchRequest
         const tableResults = document.querySelector('#results-table tbody');
         // На основі отриманих результатів таблиці звертаємось до всіх 'tr' рядків (тобто дата і назва свята) та обгортаємо їх масивом
@@ -151,5 +151,8 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         // Оновлюємо дані в таблиці, щоб все вірно виглядало
         rows.forEach(row => tableResults.appendChild(row));
-    })
-});
+    }
+
+    // Лісенер кнопки сортування - одразу від селектора без створення зайвої змінної. Виклик функції спробував зробити таким чином :)
+    document.querySelector('.sort-button').addEventListener('click', sortTable);
+})

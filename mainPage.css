@@ -67,3 +67,14 @@ button:focus {
     border-color: #bb86fc;
     box-shadow: 0 6px 20px rgba(187, 134, 252, 0.6);
 }
+
+@media (max-width: 768px) {
+    .button-container {
+        gap: 8px;
+    }
+
+    button {
+        font-size: 12px;
+        padding: 8px 12px;
+    }
+}

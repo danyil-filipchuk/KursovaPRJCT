@@ -16,6 +16,7 @@ html, body {
 }
 
 .main-container {
+
     margin-top: 18px;
     background-color: #fff;
     width: 35%;
@@ -151,10 +152,16 @@ table tbody tr:hover {
 }
 
 .visible-table {
-    display: block;
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    margin: 20px 0 20px 0;
+    gap: 20px;
 }
 
 .sort-button {
+    position: absolute;
+    left: -85px;
     cursor: pointer;
     font-size: 20px;
     display: inline-flex;
@@ -163,9 +170,44 @@ table tbody tr:hover {
     font-family: Bradley Hand, cursive;
     height: 32px;
     padding: 0 5px 0 5px;
-    margin: 10px 0 10px 0;
 }
 
 .array {
     margin: 0 0 5px 5px;
+}
+
+@media (max-width: 768px) {
+    .main-container {
+        width: 95%;
+        padding: 5px;
+    }
+
+    .visible-table {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    table {
+        width: 100%;
+        word-wrap: break-word;
+        font-size: 16px;
+    }
+
+    table thead th {
+        font-size: 18px;
+        min-width: auto;
+    }
+
+    table th, table td {
+        padding: 5px;
+        font-size: 16px;
+    }
+
+    .sort-button {
+        position: relative;
+        left: 0;
+        margin-bottom: 10px;
+    }
 }

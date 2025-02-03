@@ -2,7 +2,7 @@
 
 document.addEventListener('DOMContentLoaded', (initializationApp));
 
-const API_KEY = 'AP0JuotKTwKywKGB42ZxIG1HuVKQq25s';
+const API_KEY = 'stHxho1TgeyGH8ulCdUlL5a1WQqWGFfK';
 const countryInput = document.querySelector('#country-select');
 const yearInput = document.querySelector('#year-select');
 const mainButton = document.querySelector('.main-button');

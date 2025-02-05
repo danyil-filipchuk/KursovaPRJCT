@@ -29,7 +29,7 @@
     }
 
     function removeTableVisibility() {
-        const tableVisible = document.querySelector('.hidden-table-space');
+        const tableVisible = document.querySelector('.visible-table-space');
 
         if (tableVisible) {
             tableVisible.classList.add('hidden-table-space');

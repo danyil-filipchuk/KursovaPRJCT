@@ -67,6 +67,24 @@ html, body {
     transition: background-color 0.5s;
 }
 
+.hidden-table-space {
+    display: none;
+}
+
+.visible-table-space {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    margin: 20px 0 20px 0;
+}
+
+.delete-button {
+    height: 32px;
+    cursor: pointer;
+    position: absolute;
+    right: -150px;
+}
+
 #result {
     margin: 0;
     font-family: "Comic Sans MS", sans-serif;
@@ -100,7 +118,6 @@ html, body {
 }
 
 table {
-    margin: 20px 0;
     text-align: center;
     border: 2px solid #0ff;
     border-collapse: collapse;

@@ -19,10 +19,32 @@
         return JSON.parse(localStorage.getItem('results') || '[]');
     }
 
+    function addTableVisibility() {
+        const tableVisible = document.querySelector('.hidden-table-space');
+
+        if (tableVisible) {
+            tableVisible.classList.remove('hidden-table-space');
+            tableVisible.classList.add('visible-table-space');
+        }
+    }
+
+    function removeTableVisibility() {
+        const tableVisible = document.querySelector('.hidden-table-space');
+
+        if (tableVisible) {
+            tableVisible.classList.add('hidden-table-space');
+            tableVisible.classList.remove('visible-table-space');
+        }
+    }
+
     // Функція присвоєння до змінної результату функції про перевірку сховища і також виклик функції про вигляд таблиці (щоб відобразити в DOMContentLoaded):
     function initializationApp() {
         const results = updateLocalStorage();
-        createTableVisibility(results);
+        createTableFilling(results);
+
+        if (results.length > 0) {
+            addTableVisibility();
+        }
     }
 
     // Лісенер зміни першої дати, "відкриває" вибір другої дати та встановлює її мінімальне значення:
@@ -108,7 +130,6 @@
 
         // Встановлення максимальної кількості результатів в таблиці
         const maxResults = 10;
-
         // Отримання селектору на HTML елемент, локально в цьому Лісенері
         const rangeSelectionType = document.querySelector('#calculate-options');
 
@@ -118,7 +139,6 @@
         }
 
         const rangeSelectionTypeValue = rangeSelectionType.value;
-
         const calculation = calculateResult(rangeSelectionTypeValue, calculateDayType(firstDate.value, secondDate.value));
 
         // Виведення результату на сторінку:
@@ -126,9 +146,10 @@
 
         // Зберігаємо результати в наш localStorage для виведення в таблицю:
         storeResultsInLocalStorage(firstDate.value, secondDate.value, calculation, maxResults);
-
         // Оновлюємо дані в таблиці:
         initializationApp()
+
+        addTableVisibility();
     })
 
     // Функція збереження результатів в localStorage:
@@ -157,7 +178,7 @@
     }
 
     // Функція оновлення таблиці та додавання інформації:
-    function createTableVisibility(results) {
+    function createTableFilling(results) {
 
         // Селектор на HTMl елемент:
         const tableResults = document.querySelector('#tableResults');
@@ -198,4 +219,14 @@
             tableResults.appendChild(row); // Додавання рядка до HTMl елементу
         })
     }
+
+    document.querySelector('.delete-button').addEventListener('click', () => {
+        localStorage.removeItem('results')
+
+        const tableResults = document.querySelector('#tableResults');
+        tableResults.innerHTML = '';
+
+        removeTableVisibility();
+    })
+
 })()
